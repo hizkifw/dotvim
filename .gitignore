@@ -1,4 +1,5 @@
 # Don't include temp files
 turds/*
 *.swp
+Session.vim
 
