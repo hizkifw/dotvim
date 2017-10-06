@@ -40,6 +40,13 @@ if $COLORTERM == 'gnome-terminal'
 endif
 set number
 set so=5
+set laststatus=2
+
+" Disable scrollbar
+set guioptions-=r
+set guioptions-=R
+set guioptions-=l
+set guioptions-=L
 
 " Syntastic plugin
 set statusline+=%#warningmsg#
@@ -50,6 +57,13 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height = 5
+
+" Persistent undo
+try
+    set undodir=~/.vim/temp/undodir
+    set undofile
+catch
+endtry
 
 " Encoding stuff
 set encoding=utf8
@@ -73,6 +87,16 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 map <C-t> :gt<cr>
+" Move lines
+nmap <M-j> mz:m+<cr>`z
+nmap <M-k> mz:m-2<cr>`z
+vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+" Spellcheck
+map <leader>sc :setlocal spell!<cr>
+
+" Return to last edit position when opening files
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " Commands
 " sudo save
