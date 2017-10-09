@@ -106,6 +106,7 @@ command! W w !sudo tee % > /dev/null
 
 
 " Plugins
+set rtp+=$HOME/.local/lib/python3.5/site-packages/powerline/bindings/vim/
 call plug#begin('~/.vim/plugvim')
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
