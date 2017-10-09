@@ -23,9 +23,11 @@ set dir=/home/hizkifw/.vim/turds
 " No line wrapping
 set nowrap
 " Except for certain files
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 augroup WrapLine
 	autocmd!
-	autocmd FileType markdown setlocal wrap
+	autocmd FileType markdown setlocal linebreak
+    autocmd FileType markdown setlocal wrap
 augroup END
 
 " Disable sounds
@@ -108,5 +110,6 @@ call plug#begin('~/.vim/plugvim')
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
+Plug 'yegappan/mru'
 call plug#end()
 
