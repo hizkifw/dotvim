@@ -43,6 +43,8 @@ endif
 set number
 set so=5
 set laststatus=2
+"set background=dark
+colorscheme molokai
 
 " Disable scrollbar
 set guioptions-=r
@@ -76,7 +78,9 @@ let mapleader = " "
 let g:mapleader = " "
 
 " Quicksave
-nmap <leader>w :w!<cr>
+nmap <leader>w :w<cr>
+" Quickclose
+nmap <leader>c :clo<cr>
 " Switch windows
 nmap <leader><cr> <C-w>w
 " Ctrl-S save 
@@ -92,10 +96,10 @@ map <C-t> :gt<cr>
 " Move lines
 nmap <M-j> mz:m+<cr>`z
 nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 " Spellcheck
 map <leader>sc :setlocal spell!<cr>
+" Yank to end of line
+map Y y$
 
 " Return to last edit position when opening files
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -112,5 +116,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'yegappan/mru'
+Plug 'valloric/youcompleteme'
 call plug#end()
 
