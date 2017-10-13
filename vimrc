@@ -34,10 +34,8 @@ augroup WrapLine
 augroup END
 
 " Disable sounds
-set noerrorbells
-set novisualbell
-set t_vb=
-set tm=500
+set noeb vb t_vb=
+au GUIEnter * set vb t_vb=
 
 " Persistent undo
 try
