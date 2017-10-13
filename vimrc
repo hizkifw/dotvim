@@ -2,7 +2,10 @@
 " HizkiFW's .vimrc
 "
 
-" Stuff
+" ===========================================================================
+" General
+" ===========================================================================
+
 filetype plugin on
 filetype indent on
 
@@ -36,32 +39,6 @@ set novisualbell
 set t_vb=
 set tm=500
 
-" Display
-if $COLORTERM == 'gnome-terminal'
-	set t_Co=256
-endif
-set number
-set so=5
-set laststatus=2
-"set background=dark
-colorscheme molokai
-
-" Disable scrollbar
-set guioptions-=r
-set guioptions-=R
-set guioptions-=l
-set guioptions-=L
-
-" Syntastic plugin
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_loc_list_height = 5
-
 " Persistent undo
 try
     set undodir=~/.vim/temp/undodir
@@ -73,7 +50,34 @@ endtry
 set encoding=utf8
 set ffs=unix,dos,mac
 
+" ===========================================================================
+" Display
+" ===========================================================================
+
+colorscheme molokai
+if $COLORTERM == 'gnome-terminal'
+	set t_Co=256
+endif
+" Show line numbers
+set number
+" Vertical cursor margin
+set so=5
+" Always show status thing
+set laststatus=2
+" Column width marker
+set colorcolumn=80,120
+
+" Disable scrollbar
+set guioptions-=r
+set guioptions-=R
+set guioptions-=l
+set guioptions-=L
+
+" ===========================================================================
 " Key combos
+" ===========================================================================
+
+" Set leader to spacebar
 let mapleader = " "
 let g:mapleader = " "
 
@@ -81,17 +85,17 @@ let g:mapleader = " "
 nmap <leader>w :w<cr>
 " Quickclose
 nmap <leader>c :clo<cr>
-" Switch windows
-nmap <leader><cr> <C-w>w
+nmap <leader>q :q<cr>
 " Ctrl-S save 
 imap <C-s> <esc>:w<cr>i<right>
 " Toggle NerdTree
 nmap <leader>n :NERDTreeToggle<cr>
-" Tabs and Windows
+" Creating tabs and windows
 nmap <leader>t :tabnew<cr>
 nmap <leader>v :vnew<cr>
 nmap <leader>s :split<cr>
-" Moving around
+nmap <leader><cr> <C-w>w
+" Moving around tabs and windows
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
@@ -108,12 +112,20 @@ map Y y$
 " Return to last edit position when opening files
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
+" ===========================================================================
 " Commands
+" ===========================================================================
+
 " sudo save
 command! W w !sudo tee % > /dev/null
 
 
+" ===========================================================================
 " Plugins
+" ===========================================================================
+
+" PlugVim
+runtime! ftplugin/man.vim
 set rtp+=$HOME/.local/lib/python3.5/site-packages/powerline/bindings/vim/
 call plug#begin('~/.vim/plugvim')
 Plug 'tpope/vim-fugitive'
@@ -122,4 +134,14 @@ Plug 'scrooloose/syntastic'
 Plug 'yegappan/mru'
 Plug 'valloric/youcompleteme'
 call plug#end()
+
+" Syntastic plugin
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_loc_list_height = 5
 
