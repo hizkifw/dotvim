@@ -87,6 +87,10 @@ nmap <leader><cr> <C-w>w
 imap <C-s> <esc>:w<cr>i<right>
 " Toggle NerdTree
 nmap <leader>n :NERDTreeToggle<cr>
+" Tabs and Windows
+nmap <leader>t :tabnew<cr>
+nmap <leader>v :vnew<cr>
+nmap <leader>s :split<cr>
 " Moving around
 map <C-j> <C-W>j
 map <C-k> <C-W>k
