@@ -131,6 +131,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'yegappan/mru'
 Plug 'valloric/youcompleteme'
+Plug 'junegunn/goyo.vim'
 call plug#end()
 
 " Syntastic plugin
