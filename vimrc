@@ -6,6 +6,13 @@
 " General
 " ===========================================================================
 
+" Set .vim directory
+if has("win32")
+    let vimhome = $HOME . '/vimfiles'
+else
+    let vimhome = $HOME . '/.vim'
+endif
+
 filetype plugin on
 filetype indent on
 
@@ -21,7 +28,7 @@ set autoindent
 set expandtab
 
 " Move vim turds to a separate directory
-set dir=/home/hizkifw/.vim/turds
+let &dir = $vimhome . '/turds'
 
 " No line wrapping
 set nowrap
@@ -39,7 +46,7 @@ au GUIEnter * set vb t_vb=
 
 " Persistent undo
 try
-    set undodir=~/.vim/temp/undodir
+    let &undodir = $vimhome . '/temp/undodir'
     set undofile
 catch
 endtry
@@ -88,6 +95,8 @@ nmap <leader>q :q<cr>
 imap <C-s> <esc>:w<cr>i<right>
 " Toggle NerdTree
 nmap <leader>n :NERDTreeToggle<cr>
+" Toggle Goyo
+nmap <leader>g :Goyo<cr>
 " Creating tabs and windows
 nmap <leader>t :tabnew<cr>
 nmap <leader>v :vnew<cr>
@@ -125,7 +134,7 @@ command! W w !sudo tee % > /dev/null
 " PlugVim
 runtime! ftplugin/man.vim
 set rtp+=$HOME/.local/lib/python3.5/site-packages/powerline/bindings/vim/
-call plug#begin('~/.vim/plugvim')
+call plug#begin($vimhome . '/plugvim')
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
