@@ -28,7 +28,7 @@ set autoindent
 set expandtab
 
 " Move vim turds to a separate directory
-let &dir = $vimhome . '/turds'
+let &dir = vimhome . '/turds'
 
 " No line wrapping
 set nowrap
@@ -46,7 +46,7 @@ au GUIEnter * set vb t_vb=
 
 " Persistent undo
 try
-    let &undodir = $vimhome . '/temp/undodir'
+    let &undodir = vimhome . '/temp/undodir'
     set undofile
 catch
 endtry
@@ -134,7 +134,7 @@ command! W w !sudo tee % > /dev/null
 " PlugVim
 runtime! ftplugin/man.vim
 set rtp+=$HOME/.local/lib/python3.5/site-packages/powerline/bindings/vim/
-call plug#begin($vimhome . '/plugvim')
+call plug#begin(vimhome . '/plugvim')
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
