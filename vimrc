@@ -141,6 +141,7 @@ Plug 'scrooloose/syntastic'
 Plug 'yegappan/mru'
 Plug 'valloric/youcompleteme'
 Plug 'junegunn/goyo.vim'
+Plug 'wakatime/vim-wakatime'
 call plug#end()
 
 " Syntastic plugin
