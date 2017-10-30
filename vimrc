@@ -108,6 +108,10 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 map <C-t> :gt<cr>
+" Git stuff
+nmap <leader>ga :! git add .<cr>
+nmap <leader>gc :Gcommit<cr>
+nmap <leader>gp :Gpush<cr>
 " Move lines
 nmap <M-j> mz:m+<cr>`z
 nmap <M-k> mz:m-2<cr>`z
