@@ -86,6 +86,8 @@ set guioptions-=L
 let mapleader = " "
 let g:mapleader = " "
 
+" Escape
+imap <leader>kj <esc>
 " Quicksave
 nmap <leader>w :w<cr>
 " Quickclose
