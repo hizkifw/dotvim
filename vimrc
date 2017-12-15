@@ -71,6 +71,8 @@ set so=5
 set laststatus=2
 " Column width marker
 set colorcolumn=80,120
+" Show vim commands
+set showcmd
 
 " Disable scrollbar
 set guioptions-=r
@@ -94,7 +96,7 @@ nmap <leader>w :w<cr>
 nmap <leader>c :clo<cr>
 nmap <leader>q :q<cr>
 " Ctrl-S save 
-imap <C-s> <esc>:w<cr>i<right>
+imap <C-s> <esc>:w<cr>a
 " Toggle NerdTree
 nmap <leader>n :NERDTreeToggle<cr>
 " Toggle Goyo
@@ -109,9 +111,11 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
-map <C-t> :gt<cr>
+nmap <leader>j gt
+nmap <leader>k gT
 " Git stuff
 nmap <leader>ga :! git add .<cr>
+nmap <leader>gw :Gwrite<cr>
 nmap <leader>gc :Gcommit<cr>
 nmap <leader>gp :Gpush<cr>
 " Move lines
