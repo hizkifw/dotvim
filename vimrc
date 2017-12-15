@@ -35,8 +35,8 @@ set nowrap
 " Except for certain files
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 augroup WrapLine
-	autocmd!
-	autocmd FileType markdown setlocal linebreak
+    autocmd!
+    autocmd FileType markdown setlocal linebreak
     autocmd FileType markdown setlocal wrap
 augroup END
 
@@ -60,8 +60,8 @@ set ffs=unix,dos,mac
 " ===========================================================================
 
 colorscheme molokai
-if $COLORTERM == 'gnome-terminal'
-	set t_Co=256
+if $COLORTERM == 'gnome-terminal' || $VIM_COLORFUL == 1
+    set t_Co=256
 endif
 " Show line numbers
 set number
@@ -86,8 +86,8 @@ set guioptions-=L
 let mapleader = " "
 let g:mapleader = " "
 
-" Escape
-imap <leader>kj <esc>
+" Add lines surrounding
+nmap <leader>o O<esc>o
 " Quicksave
 nmap <leader>w :w<cr>
 " Quickclose
