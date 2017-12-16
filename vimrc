@@ -113,6 +113,8 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 nmap <leader>j gt
 nmap <leader>k gT
+nmap <leader>h :tabm -1<cr>
+nmap <leader>l :tabm +1<cr>
 " Git stuff
 nmap <leader>ga :! git add .<cr>
 nmap <leader>gw :Gwrite<cr>
