@@ -136,7 +136,7 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " ===========================================================================
 
 " sudo save
-command! W w !sudo tee % > /dev/null
+command! W exec 'w !sudo dd of=' . shellescape(expand('%'))
 
 
 " ===========================================================================
@@ -154,6 +154,7 @@ Plug 'yegappan/mru'
 Plug 'valloric/youcompleteme'
 Plug 'junegunn/goyo.vim'
 Plug 'wakatime/vim-wakatime'
+Plug 'tpope/vim-surround'
 call plug#end()
 
 " Syntastic plugin
