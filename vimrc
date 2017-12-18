@@ -104,7 +104,7 @@ nmap <leader>g :Goyo<cr>
 " Creating tabs and windows
 nmap <leader>t :tabnew<cr>
 nmap <leader>v :vnew<cr>
-nmap <leader>s :split<cr>
+nmap <leader>s :new<cr>
 nmap <leader><cr> <C-w>w
 " Moving around tabs and windows
 map <C-j> <C-W>j
