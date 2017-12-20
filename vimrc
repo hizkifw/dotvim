@@ -80,6 +80,10 @@ set guioptions-=R
 set guioptions-=l
 set guioptions-=L
 
+" Highlight trailing spaces
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+
 " ===========================================================================
 " Key combos
 " ===========================================================================
@@ -95,7 +99,7 @@ nmap <leader>w :w<cr>
 " Quickclose
 nmap <leader>c :clo<cr>
 nmap <leader>q :q<cr>
-" Ctrl-S save 
+" Ctrl-S save
 imap <C-s> <esc>:w<cr>a
 " Toggle NerdTree
 nmap <leader>n :NERDTreeToggle<cr>
