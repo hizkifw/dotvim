@@ -27,6 +27,10 @@ set smartindent
 set autoindent
 set expandtab
 
+" Code folding
+set foldmethod=indent
+set nofoldenable
+
 " Move vim turds to a separate directory
 let &dir = vimhome . '/turds'
 
