@@ -31,8 +31,8 @@ set expandtab
 set foldmethod=indent
 set nofoldenable
 
-" Move vim turds to a separate directory
-let &dir = vimhome . '/turds'
+" Disable vim swap files
+set noswapfile
 
 " No line wrapping
 set nowrap
@@ -66,6 +66,8 @@ set ffs=unix,dos,mac
 colorscheme molokai
 if $COLORTERM == 'gnome-terminal' || $VIM_COLORFUL == 1
     set t_Co=256
+    " Fix weird colors on scroll
+    set t_ut=
 endif
 " Show line numbers
 set number
