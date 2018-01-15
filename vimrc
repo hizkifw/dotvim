@@ -64,6 +64,8 @@ set ffs=unix,dos,mac
 " ===========================================================================
 
 colorscheme molokai
+" Transparent background
+highlight Normal ctermbg=none
 if $COLORTERM == 'gnome-terminal' || $VIM_COLORFUL == 1
     set t_Co=256
     " Fix weird colors on scroll
