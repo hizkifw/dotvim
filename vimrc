@@ -185,3 +185,6 @@ let g:syntastic_loc_list_height = 5
 " NERDTree
 let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeNaturalSort = 1
+
+" YouCompleteMe
+let g:ycm_python_binary_path = '/usr/bin/python3'
