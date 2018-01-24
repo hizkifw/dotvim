@@ -6,6 +6,9 @@
 " General
 " ===========================================================================
 
+" Set backspace type (for gVim on Windows)
+set bs=2
+
 " Set .vim directory
 if has("win32")
     let vimhome = $HOME . '/vimfiles'
@@ -107,8 +110,6 @@ nmap <leader>w :w<cr>
 " Quickclose
 nmap <leader>c :clo<cr>
 nmap <leader>q :q<cr>
-" Ctrl-S save
-imap <C-s> <esc>:w<cr>a
 " Toggle NerdTree
 nmap <leader>n :NERDTreeToggle<cr>
 " Toggle Goyo
@@ -166,7 +167,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'yegappan/mru'
-Plug 'valloric/youcompleteme'
+if has('python')
+    Plug 'valloric/youcompleteme'
+endif
 Plug 'junegunn/goyo.vim'
 Plug 'wakatime/vim-wakatime'
 Plug 'tpope/vim-surround'
