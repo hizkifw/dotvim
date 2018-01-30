@@ -58,6 +58,9 @@ try
 catch
 endtry
 
+" Session options
+set sessionoptions=blank,winsize,tabpages,resize,buffers,help
+
 " Encoding stuff
 set encoding=utf8
 set ffs=unix,dos,mac
@@ -67,8 +70,6 @@ set ffs=unix,dos,mac
 " ===========================================================================
 
 colorscheme molokai
-" Transparent background
-highlight Normal ctermbg=none
 if $COLORTERM == 'gnome-terminal' || $VIM_COLORFUL == 1
     set t_Co=256
     " Fix weird colors on scroll
@@ -107,13 +108,14 @@ let g:mapleader = " "
 nmap <leader>o O<esc>o
 " Quicksave
 nmap <leader>w :w<cr>
+nmap <leader>W :w!<cr>
 " Quickclose
-nmap <leader>c :clo<cr>
-nmap <leader>q :q<cr>
+nmap <leader>cl :clo<cr>
+nmap <leader>qq :qa<cr>
 " Toggle NerdTree
 nmap <leader>n :NERDTreeToggle<cr>
 " Toggle Goyo
-nmap <leader>g :Goyo<cr>
+nmap <leader>go :Goyo<cr>
 " Creating tabs and windows
 nmap <leader>t :tabnew<cr>
 nmap <leader>v :vnew<cr>
@@ -128,18 +130,27 @@ nmap <leader>j gt
 nmap <leader>k gT
 nmap <leader>h :tabm -1<cr>
 nmap <leader>l :tabm +1<cr>
+" Basic window layout manipulation
+nmap <leader>sl <C-w>L
+nmap <leader>sk <C-w>K
+nmap <leader>sj <C-w>J
+nmap <leader>sh <C-w>H
 " Git stuff
 nmap <leader>ga :! git add .<cr>
 nmap <leader>gw :Gwrite<cr>
 nmap <leader>gc :Gcommit<cr>
 nmap <leader>gp :Gpush<cr>
 " Move lines
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
+nmap <C-j> mZ:m+<cr>`Z
+nmap <C-k> mZ:m-2<cr>`Z
 " Spellcheck
 map <leader>sc :setlocal spell!<cr>
 " Yank to end of line
 map Y y$
+" Save current session
+nmap <leader>ms :mks!<cr>
+" Print working directory
+nmap <leader><leader>p :pwd<cr>
 
 " Return to last edit position when opening files
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
