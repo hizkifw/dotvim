@@ -75,6 +75,8 @@ if $COLORTERM == 'gnome-terminal' || $VIM_COLORFUL == 1
     " Fix weird colors on scroll
     set t_ut=
 endif
+" GUI font
+set guifont=Source_Code_Pro
 " Show line numbers
 set number
 " Vertical cursor margin
