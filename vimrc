@@ -44,8 +44,8 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufNewFile,BufReadPost *.txt set filetype=plaintext
 augroup WrapLine
     autocmd!
-    autocmd FileType markdown,plaintext setlocal linebreak
-    autocmd FileType markdown,plaintext setlocal wrap
+    autocmd FileType markdown,plaintext,tex setlocal linebreak
+    autocmd FileType markdown,plaintext,tex setlocal wrap
 augroup END
 
 " Disable sounds
