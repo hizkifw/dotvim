@@ -41,10 +41,11 @@ set noswapfile
 set nowrap
 " Except for certain files
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+autocmd BufNewFile,BufReadPost *.txt set filetype=plaintext
 augroup WrapLine
     autocmd!
-    autocmd FileType markdown setlocal linebreak
-    autocmd FileType markdown setlocal wrap
+    autocmd FileType markdown,plaintext setlocal linebreak
+    autocmd FileType markdown,plaintext setlocal wrap
 augroup END
 
 " Disable sounds
