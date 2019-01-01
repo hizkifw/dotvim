@@ -180,7 +180,6 @@ call plug#begin(vimhome . '/plugvim')
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
-Plug 'yegappan/mru'
 if has('python')
     Plug 'valloric/youcompleteme'
 endif
