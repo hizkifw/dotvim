@@ -182,6 +182,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'yegappan/mru'
+Plug 'posva/vim-vue'
 if has('python')
     Plug 'valloric/youcompleteme'
 endif
