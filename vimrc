@@ -88,6 +88,8 @@ set laststatus=2
 set colorcolumn=80,120
 " Show vim commands
 set showcmd
+" Highlight current line
+set cursorline
 
 " Disable scrollbar
 set guioptions-=r
@@ -178,8 +180,11 @@ runtime! ftplugin/man.vim
 set rtp+=$HOME/.local/lib/python3.5/site-packages/powerline/bindings/vim/
 call plug#begin(vimhome . '/plugvim')
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sleuth'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
+Plug 'yegappan/mru'
+Plug 'posva/vim-vue'
 if has('python')
     Plug 'valloric/youcompleteme'
 endif
