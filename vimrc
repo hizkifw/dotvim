@@ -88,6 +88,8 @@ set laststatus=2
 set colorcolumn=80,120
 " Show vim commands
 set showcmd
+" Highlight current line
+set cursorline
 
 " Disable scrollbar
 set guioptions-=r
