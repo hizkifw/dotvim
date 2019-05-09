@@ -164,14 +164,6 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 inoremap # X<bs>#
 
 " ===========================================================================
-" Commands
-" ===========================================================================
-
-" sudo save
-command! W exec 'w !sudo dd of=' . shellescape(expand('%'))
-
-
-" ===========================================================================
 " Plugins
 " ===========================================================================
 
@@ -210,3 +202,26 @@ let g:NERDTreeNaturalSort = 1
 
 " YouCompleteMe
 let g:ycm_python_binary_path = '/usr/bin/python3'
+
+" ===========================================================================
+" Commands
+" ===========================================================================
+
+" sudo save
+command! W exec 'w !sudo dd of=' . shellescape(expand('%'))
+
+fun! ReadMode()
+    :Goyo 120
+    set lbr
+    set wrap
+endfunction
+
+fun! NoReadMode()
+    :Goyo
+    set nolbr
+    set nowrap
+endfunction
+
+" Reading mode
+command Read call ReadMode()
+command NoRead call NoReadMode()
