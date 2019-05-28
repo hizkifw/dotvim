@@ -156,6 +156,9 @@ map Y y$
 nmap <leader>ms :mks!<cr>
 " Print working directory
 nmap <leader><leader>p :pwd<cr>
+" Remap F1 key to Escape
+map <F1> <Esc>
+imap <F1> <Esc>
 
 " Return to last edit position when opening files
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
