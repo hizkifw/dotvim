@@ -181,7 +181,8 @@ runtime! ftplugin/man.vim
 set rtp+=$HOME/.local/lib/python3.5/site-packages/powerline/bindings/vim/
 call plug#begin(vimhome . '/plugvim')
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-surround'
+Plug 'tcbbd/detectindent'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'yegappan/mru'
@@ -190,7 +191,6 @@ if has('python')
 endif
 Plug 'junegunn/goyo.vim'
 Plug 'wakatime/vim-wakatime'
-Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -221,6 +221,12 @@ map ; <Plug>(easymotion-s)
 
 " vim-closetag
 let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.js'
+
+" DetectIndent
+augroup DetectIndent
+    autocmd!
+    autocmd BufReadPost *  DetectIndent
+augroup END
 
 " ===========================================================================
 " Commands
