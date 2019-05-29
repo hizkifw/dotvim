@@ -102,9 +102,7 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 
 " Search highlight
-set hls
-nnoremap <silent> <esc> :noh<cr><esc>
-nnoremap <CR> :noh<CR><CR>
+set is
 
 " ===========================================================================
 " Key combos
@@ -187,7 +185,6 @@ Plug 'tpope/vim-sleuth'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'yegappan/mru'
-Plug 'posva/vim-vue'
 if has('python')
     Plug 'valloric/youcompleteme'
 endif
@@ -195,6 +192,9 @@ Plug 'junegunn/goyo.vim'
 Plug 'wakatime/vim-wakatime'
 Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'posva/vim-vue'
 call plug#end()
 
 " Syntastic plugin
@@ -216,7 +216,7 @@ let g:NERDTreeNaturalSort = 1
 let g:ycm_python_binary_path = '/usr/bin/python3'
 
 " EasyMotion
-map ; <Plug>(easymotion-prefix)
+map ; <Plug>(easymotion-s)
 
 " ===========================================================================
 " Commands
