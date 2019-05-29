@@ -101,6 +101,11 @@ set guioptions-=L
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 
+" Search highlight
+set hls
+nnoremap <silent> <esc> :noh<cr><esc>
+nnoremap <CR> :noh<CR><CR>
+
 " ===========================================================================
 " Key combos
 " ===========================================================================
