@@ -195,6 +195,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'posva/vim-vue'
+Plug 'alvan/vim-closetag'
 call plug#end()
 
 " Syntastic plugin
@@ -217,6 +218,9 @@ let g:ycm_python_binary_path = '/usr/bin/python3'
 
 " EasyMotion
 map ; <Plug>(easymotion-s)
+
+" vim-closetag
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.js'
 
 " ===========================================================================
 " Commands
