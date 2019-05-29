@@ -159,6 +159,9 @@ nmap <leader><leader>p :pwd<cr>
 " Remap F1 key to Escape
 map <F1> <Esc>
 imap <F1> <Esc>
+" Insert mode indentation
+imap <C-l> <Esc>0i<Tab><Esc>A
+imap <C-h> <Esc>0wi<BS><Esc>A
 
 " Return to last edit position when opening files
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -186,6 +189,7 @@ endif
 Plug 'junegunn/goyo.vim'
 Plug 'wakatime/vim-wakatime'
 Plug 'tpope/vim-surround'
+Plug 'easymotion/vim-easymotion'
 call plug#end()
 
 " Syntastic plugin
@@ -205,6 +209,9 @@ let g:NERDTreeNaturalSort = 1
 
 " YouCompleteMe
 let g:ycm_python_binary_path = '/usr/bin/python3'
+
+" EasyMotion
+map ; <Plug>(easymotion-prefix)
 
 " ===========================================================================
 " Commands
