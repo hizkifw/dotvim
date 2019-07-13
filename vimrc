@@ -196,6 +196,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'posva/vim-vue'
 Plug 'alvan/vim-closetag'
+Plug 'sbdchd/neoformat'
 call plug#end()
 
 " Syntastic plugin
@@ -227,6 +228,9 @@ augroup DetectIndent
     autocmd!
     autocmd BufReadPost *  DetectIndent
 augroup END
+
+" neoformat every file save
+autocmd BufWritePre *.js Neoformat
 
 " ===========================================================================
 " Commands
