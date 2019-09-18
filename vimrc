@@ -165,6 +165,8 @@ imap <F1> <Esc>
 " Insert mode indentation
 imap <C-l> <Esc>0i<Tab><Esc>A
 imap <C-h> <Esc>0wi<BS><Esc>A
+" Put current buffer to clipboard
+nmap <leader>y :! cat % \| xclip -selection clipboard<cr><cr>
 
 " Return to last edit position when opening files
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
