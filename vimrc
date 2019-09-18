@@ -79,17 +79,17 @@ endif
 " GUI font
 set guifont=Source_Code_Pro
 " Show line numbers
-set number
+" set number
 " Vertical cursor margin
 set so=5
-" Always show status thing
-set laststatus=2
+" Hide status bar when no other windows
+set laststatus=1
 " Column width marker
-set colorcolumn=80,120
+" set colorcolumn=80,120
 " Show vim commands
 set showcmd
 " Highlight current line
-set cursorline
+" set cursorline
 
 " Disable scrollbar
 set guioptions-=r
