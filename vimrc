@@ -78,6 +78,9 @@ if $COLORTERM == 'gnome-terminal' || $VIM_COLORFUL == 1
 endif
 " GUI font
 set guifont=Source_Code_Pro
+" Remove gVim toolbars
+set guioptions -=T
+set guioptions -=m
 " Show line numbers
 " set number
 " Vertical cursor margin
@@ -172,7 +175,7 @@ inoremap # X<bs>#
 runtime! ftplugin/man.vim
 set rtp+=$HOME/.local/lib/python3.5/site-packages/powerline/bindings/vim/
 call plug#begin(vimhome . '/plugvim')
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tcbbd/detectindent'
@@ -198,7 +201,7 @@ let g:coc_global_extensions = [
   \ ]
 inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-autocmd CursorHold * silent call CocActionAsync('highlight')
+"autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
