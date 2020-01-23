@@ -23,8 +23,8 @@ filetype indent on
 set autoread
 
 " Indentation stuff
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set smarttab
 set smartindent
 set autoindent
@@ -78,6 +78,9 @@ if $COLORTERM == 'gnome-terminal' || $VIM_COLORFUL == 1
 endif
 " GUI font
 set guifont=Source_Code_Pro
+" Remove gVim toolbars
+set guioptions -=T
+set guioptions -=m
 " Show line numbers
 " set number
 " Vertical cursor margin
@@ -113,13 +116,13 @@ let mapleader = " "
 let g:mapleader = " "
 
 " Add lines surrounding
-nmap <leader>o O<esc>o
+nmap <leader>o O<esc>jo<esc>ki
 " Quicksave
 nmap <leader>w :w<cr>
 nmap <leader>W :w!<cr>
 " Quickclose
 nmap <leader>cl :clo<cr>
-nmap <leader>qq :qa<cr>
+nmap <leader>qa :qa<cr>
 " Toggle NerdTree
 nmap <leader>n :NERDTreeToggle<cr>
 " Toggle Goyo
@@ -148,23 +151,13 @@ nmap <leader>ga :! git add .<cr>
 nmap <leader>gw :Gwrite<cr>
 nmap <leader>gc :Gcommit<cr>
 nmap <leader>gp :Gpush<cr>
-" Move lines
-nmap <C-j> mZ:m+<cr>`Z
-nmap <C-k> mZ:m-2<cr>`Z
 " Spellcheck
 map <leader>sc :setlocal spell!<cr>
 " Yank to end of line
 map Y y$
-" Save current session
-nmap <leader>ms :mks!<cr>
-" Print working directory
-nmap <leader><leader>p :pwd<cr>
 " Remap F1 key to Escape
 map <F1> <Esc>
 imap <F1> <Esc>
-" Insert mode indentation
-imap <C-l> <Esc>0i<Tab><Esc>A
-imap <C-h> <Esc>0wi<BS><Esc>A
 " Put current buffer to clipboard
 nmap <leader>y :! cat % \| xclip -selection clipboard<cr><cr>
 
@@ -182,15 +175,11 @@ inoremap # X<bs>#
 runtime! ftplugin/man.vim
 set rtp+=$HOME/.local/lib/python3.5/site-packages/powerline/bindings/vim/
 call plug#begin(vimhome . '/plugvim')
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tcbbd/detectindent'
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
-Plug 'yegappan/mru'
-if has('python')
-    Plug 'valloric/youcompleteme'
-endif
 Plug 'junegunn/goyo.vim'
 Plug 'wakatime/vim-wakatime'
 Plug 'easymotion/vim-easymotion'
@@ -201,23 +190,33 @@ Plug 'alvan/vim-closetag'
 Plug 'sbdchd/neoformat'
 call plug#end()
 
-" Syntastic plugin
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_loc_list_height = 5
-let g:syntastic_tex_checkers = ['lacheck']
+" Conquer of Completion
+let g:coc_global_extensions = [
+  \ 'coc-pairs',
+  \ 'coc-tsserver',
+  \ 'coc-eslint',
+  \ 'coc-prettier',
+  \ 'coc-json',
+  \ 'coc-python',
+  \ ]
+inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+"autocmd CursorHold * silent call CocActionAsync('highlight')
+nmap <leader>rn <Plug>(coc-rename)
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 " NERDTree
 let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeNaturalSort = 1
-
-" YouCompleteMe
-let g:ycm_python_binary_path = '/usr/bin/python3'
+let g:NERDTreeIgnore = ['^node_modules$']
 
 " EasyMotion
 map ; <Plug>(easymotion-s)
@@ -228,11 +227,11 @@ let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.js'
 " DetectIndent
 augroup DetectIndent
     autocmd!
-    autocmd BufReadPost *  DetectIndent
+    autocmd BufReadPost * DetectIndent
 augroup END
 
 " neoformat every file save
-autocmd BufWritePre *.js Neoformat
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Neoformat
 
 " ===========================================================================
 " Commands
