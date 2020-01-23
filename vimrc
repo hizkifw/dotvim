@@ -76,11 +76,6 @@ if $COLORTERM == 'gnome-terminal' || $VIM_COLORFUL == 1
     " Fix weird colors on scroll
     set t_ut=
 endif
-" GUI font
-set guifont=Source_Code_Pro
-" Remove gVim toolbars
-set guioptions -=T
-set guioptions -=m
 " Show line numbers
 " set number
 " Vertical cursor margin
@@ -93,12 +88,6 @@ set laststatus=1
 set showcmd
 " Highlight current line
 " set cursorline
-
-" Disable scrollbar
-set guioptions-=r
-set guioptions-=R
-set guioptions-=l
-set guioptions-=L
 
 " Highlight trailing spaces
 highlight ExtraWhitespace ctermbg=red guibg=red
