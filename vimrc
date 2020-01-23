@@ -70,7 +70,7 @@ set ffs=unix,dos,mac
 " Display
 " ===========================================================================
 
-" colorscheme molokai
+colorscheme afterglow
 if $COLORTERM == 'gnome-terminal' || $VIM_COLORFUL == 1
     set t_Co=256
     " Fix weird colors on scroll
