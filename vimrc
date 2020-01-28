@@ -80,8 +80,6 @@ endif
 " set number
 " Vertical cursor margin
 set so=5
-" Hide status bar when no other windows
-set laststatus=1
 " Column width marker
 " set colorcolumn=80,120
 " Show vim commands
@@ -104,6 +102,11 @@ set t_ZR=[23m
 python3 from powerline.vim import setup as powerline_setup
 python3 powerline_setup()
 python3 del powerline_setup
+set laststatus=2
+set showtabline=2
+set noshowmode
+set noshowcmd
+set shortmess+=F
 
 " ===========================================================================
 " Key combos
