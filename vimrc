@@ -96,6 +96,15 @@ match ExtraWhitespace /\s\+$/
 " Search highlight
 set is
 
+" Override italics escape sequences for tmux
+set t_ZH=[3m
+set t_ZR=[23m
+
+" Powerline status
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
+
 " ===========================================================================
 " Key combos
 " ===========================================================================
