@@ -186,9 +186,11 @@ Plug 'wakatime/vim-wakatime'
 Plug 'easymotion/vim-easymotion'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'ianks/vim-tsx'
 Plug 'posva/vim-vue'
 Plug 'alvan/vim-closetag'
 Plug 'sbdchd/neoformat'
+Plug 'leafgarland/typescript-vim'
 call plug#end()
 
 " Conquer of Completion
@@ -220,7 +222,7 @@ let g:NERDTreeNaturalSort = 1
 let g:NERDTreeIgnore = ['^node_modules$']
 
 " EasyMotion
-map ; <Plug>(easymotion-s)
+nmap ; <Plug>(easymotion-s)
 
 " vim-closetag
 let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.js'
