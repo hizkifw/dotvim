@@ -79,8 +79,10 @@ endif
 " GUI font
 set guifont=Source_Code_Pro
 " Remove gVim toolbars
-set guioptions -=T
-set guioptions -=m
+if has("gui_running")
+    set guioptions -=T
+    set guioptions -=m
+endif
 " Show line numbers
 " set number
 " Vertical cursor margin
