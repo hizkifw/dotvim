@@ -70,16 +70,17 @@ set ffs=unix,dos,mac
 " Display
 " ===========================================================================
 
-colorscheme molokai
+colorscheme afterglow
 if $COLORTERM == 'gnome-terminal' || $VIM_COLORFUL == 1
     set t_Co=256
     " Fix weird colors on scroll
     set t_ut=
 endif
-" GUI font
-set guifont=Source_Code_Pro
-" Remove gVim toolbars
+
 if has("gui_running")
+    " GUI font
+    set guifont=Source_Code_Pro
+    " Remove gVim toolbars
     set guioptions -=T
     set guioptions -=m
 endif
@@ -87,8 +88,6 @@ endif
 " set number
 " Vertical cursor margin
 set so=5
-" Hide status bar when no other windows
-set laststatus=1
 " Column width marker
 " set colorcolumn=80,120
 " Show vim commands
@@ -96,18 +95,26 @@ set showcmd
 " Highlight current line
 " set cursorline
 
-" Disable scrollbar
-set guioptions-=r
-set guioptions-=R
-set guioptions-=l
-set guioptions-=L
-
 " Highlight trailing spaces
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 
 " Search highlight
 set is
+
+" Override italics escape sequences for tmux
+set t_ZH=[3m
+set t_ZR=[23m
+
+" Powerline status
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
+set laststatus=2
+set showtabline=2
+set noshowmode
+set noshowcmd
+set shortmess+=F
 
 " ===========================================================================
 " Key combos
@@ -187,9 +194,11 @@ Plug 'wakatime/vim-wakatime'
 Plug 'easymotion/vim-easymotion'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'ianks/vim-tsx'
 Plug 'posva/vim-vue'
 Plug 'alvan/vim-closetag'
 Plug 'sbdchd/neoformat'
+Plug 'leafgarland/typescript-vim'
 call plug#end()
 
 " Conquer of Completion
@@ -221,7 +230,7 @@ let g:NERDTreeNaturalSort = 1
 let g:NERDTreeIgnore = ['^node_modules$']
 
 " EasyMotion
-map ; <Plug>(easymotion-s)
+nmap ; <Plug>(easymotion-s)
 
 " vim-closetag
 let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.js'
