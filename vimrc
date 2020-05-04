@@ -107,14 +107,16 @@ set t_ZH=[3m
 set t_ZR=[23m
 
 " Powerline status
-python3 from powerline.vim import setup as powerline_setup
-python3 powerline_setup()
-python3 del powerline_setup
-set laststatus=2
-set showtabline=2
-set noshowmode
-set noshowcmd
-set shortmess+=F
+if has("python3")
+    python3 from powerline.vim import setup as powerline_setup
+    python3 powerline_setup()
+    python3 del powerline_setup
+    set laststatus=2
+    set showtabline=2
+    set noshowmode
+    set noshowcmd
+    set shortmess+=F
+endif
 
 " ===========================================================================
 " Key combos
