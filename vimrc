@@ -107,16 +107,16 @@ set t_ZH=[3m
 set t_ZR=[23m
 
 " Powerline status
-if has("python3")
-    python3 from powerline.vim import setup as powerline_setup
-    python3 powerline_setup()
-    python3 del powerline_setup
-    set laststatus=2
-    set showtabline=2
-    set noshowmode
-    set noshowcmd
-    set shortmess+=F
-endif
+" if has("python3")
+"     python3 from powerline.vim import setup as powerline_setup
+"     python3 powerline_setup()
+"     python3 del powerline_setup
+"     set laststatus=2
+"     set showtabline=2
+"     set noshowmode
+"     set noshowcmd
+"     set shortmess+=F
+" endif
 
 " ===========================================================================
 " Key combos
@@ -186,7 +186,6 @@ inoremap # X<bs>#
 runtime! ftplugin/man.vim
 set rtp+=$HOME/.local/lib/python3.5/site-packages/powerline/bindings/vim/
 call plug#begin(vimhome . '/plugvim')
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tcbbd/detectindent'
@@ -197,34 +196,11 @@ Plug 'easymotion/vim-easymotion'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'ianks/vim-tsx'
-Plug 'posva/vim-vue'
 Plug 'alvan/vim-closetag'
 Plug 'sbdchd/neoformat'
 Plug 'leafgarland/typescript-vim'
+Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
-
-" Conquer of Completion
-let g:coc_global_extensions = [
-  \ 'coc-pairs',
-  \ 'coc-tsserver',
-  \ 'coc-eslint',
-  \ 'coc-prettier',
-  \ 'coc-json',
-  \ 'coc-python',
-  \ ]
-inoremap <silent><expr> <c-space> coc#refresh()
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-"autocmd CursorHold * silent call CocActionAsync('highlight')
-nmap <leader>rn <Plug>(coc-rename)
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
 
 " NERDTree
 let g:NERDTreeQuitOnOpen = 1
