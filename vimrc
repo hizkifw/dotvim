@@ -85,7 +85,7 @@ if has("gui_running")
     set guioptions -=m
 endif
 " Show line numbers
-" set number
+set number
 " Vertical cursor margin
 set so=5
 " Column width marker
@@ -133,7 +133,7 @@ nmap <leader>w :w<cr>
 nmap <leader>W :w!<cr>
 " Quickclose
 nmap <leader>cl :clo<cr>
-nmap <leader>qa :qa<cr>
+nmap <leader>qq :qa<cr>
 " Toggle NerdTree
 nmap <leader>n :NERDTreeToggle<cr>
 " Toggle Goyo
@@ -226,6 +226,7 @@ let g:NERDTreeNaturalSort = 1
 let g:NERDTreeIgnore = ['^node_modules$']
 
 " NERDCommenter
+let g:NERDCreateDefaultMappings = 0
 let g:NERDSpaceDelims = 1
 let g:NERDCommentEmptyLines = 1
 nmap <C-_> <Plug>NERDCommenterToggle
