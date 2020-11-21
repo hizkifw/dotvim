@@ -186,26 +186,50 @@ inoremap # X<bs>#
 runtime! ftplugin/man.vim
 set rtp+=$HOME/.local/lib/python3.5/site-packages/powerline/bindings/vim/
 call plug#begin(vimhome . '/plugvim')
-Plug 'tpope/vim-fugitive'
+
+" Utilities
 Plug 'tpope/vim-surround'
-Plug 'tcbbd/detectindent'
-Plug 'scrooloose/nerdtree'
-Plug 'junegunn/goyo.vim'
-Plug 'wakatime/vim-wakatime'
-Plug 'easymotion/vim-easymotion'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'ianks/vim-tsx'
-Plug 'alvan/vim-closetag'
-Plug 'sbdchd/neoformat'
-Plug 'leafgarland/typescript-vim'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'preservim/nerdcommenter'
+Plug 'alvan/vim-closetag'
+Plug 'junegunn/goyo.vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'tcbbd/detectindent'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+
+" Code completion
+Plug 'neoclide/coc.nvim'
+
+" Typescript support
+Plug 'herringtondarkholme/yats.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'peitalin/vim-jsx-typescript'
+
+" Language server
+" Plug 'theia-ide/typescript-language-server'
+" Plug 'prabirshrestha/async.vim'
+" Plug 'prabirshrestha/vim-lsp'
+" Plug 'prabirshrestha/asyncomplete.vim'
+" Plug 'prabirshrestha/asyncomplete-lsp'
+" Plug 'ryanolsonx/vim-lsp-typescript'
+
+" Plug 'pangloss/vim-javascript'
+" Plug 'mxw/vim-jsx'
+" Plug 'ianks/vim-tsx'
 call plug#end()
 
 " NERDTree
 let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeNaturalSort = 1
 let g:NERDTreeIgnore = ['^node_modules$']
+
+" NERDCommenter
+let g:NERDSpaceDelims = 1
+let g:NERDCommentEmptyLines = 1
+nmap <C-_> <Plug>NERDCommenterToggle
+vmap <C-_> <Plug>NERDCommenterToggle<CR>gv
 
 " EasyMotion
 nmap ; <Plug>(easymotion-s)
@@ -219,8 +243,30 @@ augroup DetectIndent
     autocmd BufReadPost * DetectIndent
 augroup END
 
-" neoformat every file save
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Neoformat
+" Prettier every file save
+autocmd BufWritePre * PrettierAsync
+
+" ctrlp ignore files in .gitignore
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
+" Code completion
+let g:coc_global_extensions = [ 'coc-tsserver' ]
+" Map tab to autocomplete
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
 
 " ===========================================================================
 " Commands
