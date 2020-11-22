@@ -275,6 +275,9 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 set updatetime=300
 let g:coc_global_extensions = [ 'coc-tsserver', 'coc-snippets' ]
 
+" Always show the line number gutter
+set signcolumn=yes
+
 " Map tab to autocomplete
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
