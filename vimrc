@@ -148,6 +148,10 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+nmap <leader>gj <C-W>j
+nmap <leader>gk <C-W>k
+nmap <leader>gh <C-W>h
+nmap <leader>gl <C-W>l
 nmap <leader>j gt
 nmap <leader>k gT
 nmap <leader>h :tabm -1<cr>
@@ -157,11 +161,6 @@ nmap <leader>sl <C-w>L
 nmap <leader>sk <C-w>K
 nmap <leader>sj <C-w>J
 nmap <leader>sh <C-w>H
-" Git stuff
-nmap <leader>ga :! git add .<cr>
-nmap <leader>gw :Gwrite<cr>
-nmap <leader>gc :Gcommit<cr>
-nmap <leader>gp :Gpush<cr>
 " Spellcheck
 map <leader>sc :setlocal spell!<cr>
 " Yank to end of line
@@ -207,17 +206,6 @@ Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'peitalin/vim-jsx-typescript'
 
-" Language server
-" Plug 'theia-ide/typescript-language-server'
-" Plug 'prabirshrestha/async.vim'
-" Plug 'prabirshrestha/vim-lsp'
-" Plug 'prabirshrestha/asyncomplete.vim'
-" Plug 'prabirshrestha/asyncomplete-lsp'
-" Plug 'ryanolsonx/vim-lsp-typescript'
-
-" Plug 'pangloss/vim-javascript'
-" Plug 'mxw/vim-jsx'
-" Plug 'ianks/vim-tsx'
 call plug#end()
 
 " NERDTree
@@ -250,18 +238,27 @@ autocmd BufWritePre * PrettierAsync
 " ctrlp ignore files in .gitignore
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
-" Code completion
+" ===========================================================================
+" Conquer of Completion
+" ===========================================================================
+set updatetime=300
 let g:coc_global_extensions = [ 'coc-tsserver' ]
+
 " Map tab to autocomplete
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" manually trigger completion
+inoremap <silent><expr> <C-l> coc#refresh()
+
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -285,6 +282,8 @@ autocmd CursorHold * :call <SID>show_hover_doc()
 " Rename
 nmap <F2> <Plug>(coc-rename)
 
+" Code action
+nmap <leader>do <Plug>(coc-codeaction)
 
 " ===========================================================================
 " Commands
