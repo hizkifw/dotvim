@@ -192,9 +192,11 @@ let g:yankdir = vimhome . '/temp/yankdir'
 
 function! SaveYankedText()
   call writefile(getreg('0', 1, 1), g:yankdir . '/0')
+  call writefile(getreg('"', 1, 1), g:yankdir . '/q')
 endfunction
 function! LoadYankedText()
   call setreg('0', readfile(g:yankdir . '/0'))
+  call setreg('"', readfile(g:yankdir . '/q'))
 endfunction
 
 if !isdirectory(g:yankdir)
@@ -206,6 +208,7 @@ augroup PersistentYank
 augroup END
 
 nnoremap <silent> p :call LoadYankedText()<cr>p
+nnoremap <silent> P :call LoadYankedText()<cr>P
 
 " ===========================================================================
 " Plugins
