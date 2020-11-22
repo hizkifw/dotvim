@@ -198,17 +198,25 @@ function! LoadYankedText()
   call setreg('0', readfile(g:yankdir . '/0'))
   call setreg('"', readfile(g:yankdir . '/q'))
 endfunction
+function! PutYankedText(key)
+  call LoadYankedText()
+  return a:key
+endfunction
 
 if !isdirectory(g:yankdir)
     call mkdir(g:yankdir, "", 0700)
 endif
 
 augroup PersistentYank
+  autocmd!
   autocmd TextYankPost * call SaveYankedText()
+  autocmd FocusGained * call LoadYankedText()
 augroup END
 
-nnoremap <silent> p :call LoadYankedText()<cr>p
-nnoremap <silent> P :call LoadYankedText()<cr>P
+nnoremap <silent><expr> p PutYankedText("p")
+nnoremap <silent><expr> P PutYankedText("P")
+vnoremap <silent><expr> p PutYankedText("p")
+vnoremap <silent><expr> P PutYankedText("P")
 
 " ===========================================================================
 " Plugins
