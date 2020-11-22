@@ -15,6 +15,9 @@ if has("win32")
 else
     let vimhome = $HOME . '/.vim'
 endif
+if !isdirectory(vimhome . '/temp')
+    call mkdir(vimhome . '/temp', "", 0700)
+endif
 
 filetype plugin on
 filetype indent on
@@ -54,7 +57,11 @@ au GUIEnter * set vb t_vb=
 
 " Persistent undo
 try
-    let &undodir = vimhome . '/temp/undodir'
+    let undodir = vimhome . '/temp/undodir'
+    if !isdirectory(undodir)
+        call mkdir(undodir, "", 0700)
+    endif
+    let &undodir = undodir
     set undofile
 catch
 endtry
@@ -176,6 +183,29 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 
 " Fix Python indents
 inoremap # X<bs>#
+
+" ===========================================================================
+" Global copy-paste
+" ===========================================================================
+
+let g:yankdir = vimhome . '/temp/yankdir'
+
+function! SaveYankedText()
+  call writefile(getreg('0', 1, 1), g:yankdir . '/0')
+endfunction
+function! LoadYankedText()
+  call setreg('0', readfile(g:yankdir . '/0'))
+endfunction
+
+if !isdirectory(g:yankdir)
+    call mkdir(g:yankdir, "", 0700)
+endif
+
+augroup PersistentYank
+  autocmd TextYankPost * call SaveYankedText()
+augroup END
+
+nnoremap <silent> p :call LoadYankedText()<cr>p
 
 " ===========================================================================
 " Plugins
