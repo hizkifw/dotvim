@@ -272,6 +272,9 @@ autocmd BufWritePre *.js,*.ts,*.jsx,*.tsx,*.json,*.css,*.scss,*.less,*.graphql,*
 " ctrlp ignore files in .gitignore
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
+" close all popups on esc
+nnoremap <silent> <esc> :call popup_clear(1)<cr><esc>
+
 " ===========================================================================
 " Conquer of Completion
 " ===========================================================================
