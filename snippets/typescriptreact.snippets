@@ -42,4 +42,4 @@ snippet uef "useEffect hook"
 	}, []);
 
 snippet ust "useState hook"
-	const [${1:name}, set${1/(.)(.*)/${1:/upcase}${2}/}] = React.useEffect(${2:defaultValue});
+	const [${1:name}, set${1/(.)(.*)/${1:/upcase}${2}/}] = React.useState(${2:defaultValue});
