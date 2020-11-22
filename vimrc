@@ -233,7 +233,8 @@ augroup DetectIndent
 augroup END
 
 " Prettier every file save
-autocmd BufWritePre * PrettierAsync
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.ts,*.jsx,*.tsx,*.json,*.css,*.scss,*.less,*.graphql,*.html Prettier
 
 " ctrlp ignore files in .gitignore
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
@@ -242,22 +243,24 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 " Conquer of Completion
 " ===========================================================================
 set updatetime=300
-let g:coc_global_extensions = [ 'coc-tsserver' ]
+let g:coc_global_extensions = [ 'coc-tsserver', 'coc-snippets' ]
 
 " Map tab to autocomplete
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
 
 " manually trigger completion
-inoremap <silent><expr> <C-l> coc#refresh()
+inoremap <silent><expr> <C-m> coc#refresh()
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -284,6 +287,10 @@ nmap <F2> <Plug>(coc-rename)
 
 " Code action
 nmap <leader>do <Plug>(coc-codeaction)
+
+" Fix insert mode <cr> somehow broken
+" idk why
+inoremap <silent> <cr> <cr>
 
 " ===========================================================================
 " Commands
