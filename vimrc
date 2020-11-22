@@ -339,6 +339,10 @@ nmap <leader>do <Plug>(coc-codeaction)
 " idk why
 inoremap <silent> <cr> <cr>
 
+" Opening vim somehow starts it in replace mode
+" https://stackoverflow.com/a/51388837
+nnoremap <esc>^[ <esc>^[
+
 " ===========================================================================
 " Commands
 " ===========================================================================
