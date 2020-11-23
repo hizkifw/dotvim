@@ -141,8 +141,17 @@ nmap <leader>W :w!<cr>
 " Quickclose
 nmap <leader>cl :clo<cr>
 nmap <leader>qq :qa<cr>
+
 " Toggle NerdTree
-nmap <leader>n :NERDTreeToggle<cr>
+function! ToggleNERDTree()
+  if exists("b:NERDTree")
+    NERDTreeToggle
+  else
+    NERDTreeFind
+  endif
+endfunction
+nmap <silent> <leader>n :call ToggleNERDTree()<cr>
+
 " Toggle Goyo
 nmap <leader>go :Goyo<cr>
 " Creating tabs and windows
