@@ -144,7 +144,7 @@ nmap <leader>qq :qa<cr>
 
 " Toggle NerdTree
 function! ToggleNERDTree()
-  if exists("b:NERDTree")
+  if exists("b:NERDTree") || len(expand('%:p')) == 0
     NERDTreeToggle
   else
     NERDTreeFind
