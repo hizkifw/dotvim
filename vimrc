@@ -246,6 +246,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'tcbbd/detectindent'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'airblade/vim-gitgutter'
 
 " Code completion
 Plug 'neoclide/coc.nvim'
