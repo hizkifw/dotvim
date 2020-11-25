@@ -8,7 +8,7 @@ snippet cmp React function component
 		return null;
 	}
 
-	export default ${0}
+	export default ${0};
 
 snippet uef useEffect hook
 	React.useEffect(() => {
@@ -50,3 +50,33 @@ snippet nextdoc Next Custom Document
 	}
 
 	export default MyDocument
+
+snippet context React context
+	import React from 'react';
+
+	type ${1}ContextType = {
+		//
+	}
+
+	const ${1}Context = React.createContext<${1}ContextType>({
+		//
+	});
+
+	export default ${1}Context;
+
+snippet provider React context provider
+	import React from 'react';
+	import ${0}Context from './${0}Context';
+
+	const ${0}Provider = (props: any) => {
+		return (
+			<${0}Context.Provider
+				value={{
+					//
+				}}
+				{...props}
+			/>
+		);
+	}
+
+	export default ${0}Provider;
