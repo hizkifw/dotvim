@@ -18,7 +18,6 @@ let g:colors_name = "afterglow"
 " Default GUI Colours
 let s:foreground = "d6d6d6"
 let s:background = "1a1a1a"
-let s:float = "2a2a2a"
 let s:selection = "424242"
 let s:line = "393939"
 let s:comment = "797979"
@@ -29,7 +28,7 @@ let s:green = "b4c973"
 let s:blue = "6c99bb"
 let s:wine = "b05279"
 let s:purple = "9e86c8"
-let s:window = "4d5057"
+let s:window = "2a2a2a"
 
 " Auxiliar colors
 let s:black = "000000"
@@ -272,8 +271,8 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
         call <SID>X("CursorLine", "", s:line, "NONE")
         call <SID>X("CursorLineNR", s:orange, "", "NONE")
         call <SID>X("CursorColumn", "", s:line, "NONE")
-        call <SID>X("PMenu", s:foreground, s:float, "NONE")
-        call <SID>X("PMenuSel", s:foreground, s:float, "reverse")
+        call <SID>X("PMenu", s:foreground, s:window, "NONE")
+        call <SID>X("PMenuSel", s:foreground, s:window, "reverse")
     end
     if version >= 703
         call <SID>X("ColorColumn", "", s:line, "NONE")
