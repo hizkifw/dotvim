@@ -23,6 +23,16 @@ snippet nestcontroller NestJS Controller
 		constructor(${3}) {}
 	}
 
+snippet nestguard NestJS Guard
+	import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
+
+	@Injectable()
+	export class ${1}Guard implements CanActivate {
+		async canActivate(context: ExecutionContext): Promise<boolean> {
+			return false;
+		}
+	}
+
 snippet nextapi Next API Route
 	import type { NextApiRequest, NextApiResponse } from 'next';
 
