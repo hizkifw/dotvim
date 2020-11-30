@@ -335,7 +335,7 @@ nnoremap <silent> <esc> :call popup_clear(1)<cr><esc>
 " Conquer of Completion
 " ===========================================================================
 set updatetime=300
-let g:coc_global_extensions = [ 'coc-tsserver', 'coc-snippets' ]
+let g:coc_global_extensions = [ 'coc-tsserver', 'coc-snippets', 'coc-go' ]
 
 " Always show the line number gutter
 set signcolumn=yes
