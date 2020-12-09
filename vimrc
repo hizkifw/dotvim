@@ -238,8 +238,8 @@ inoremap # X<bs>#
 let g:yankdir = vimhome . '/temp/yankdir'
 
 function! SaveYankedText()
-  call writefile(getreg('0', 1, 1), g:yankdir . '/0')
-  call writefile(getreg('"', 1, 1), g:yankdir . '/q')
+  call writefile(getreg('0', 1, 1), g:yankdir . '/0', "b")
+  call writefile(getreg('"', 1, 1), g:yankdir . '/q', "b")
 endfunction
 function! LoadYankedText()
   call setreg('0', readfile(g:yankdir . '/0'))
@@ -260,10 +260,10 @@ augroup PersistentYank
   autocmd FocusGained * call LoadYankedText()
 augroup END
 
-nnoremap <silent><expr> p PutYankedText("p")
-nnoremap <silent><expr> P PutYankedText("P")
-vnoremap <silent><expr> p PutYankedText("p")
-vnoremap <silent><expr> P PutYankedText("P")
+nnoremap <silent><expr> <leader>p PutYankedText("p")
+nnoremap <silent><expr> <leader>P PutYankedText("P")
+vnoremap <silent><expr> <leader>p PutYankedText("p")
+vnoremap <silent><expr> <leader>P PutYankedText("P")
 
 " ===========================================================================
 " Plugins
