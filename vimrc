@@ -295,6 +295,8 @@ Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'peitalin/vim-jsx-typescript'
 
+" Other languages
+Plug 'TovarishFin/vim-solidity'
 call plug#end()
 
 " NERDTree
