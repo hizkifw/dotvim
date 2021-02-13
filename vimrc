@@ -34,7 +34,7 @@ set autoindent
 set expandtab
 
 " Code folding
-set foldmethod=indent
+set foldmethod=syntax
 set nofoldenable
 
 " Disable vim swap files
